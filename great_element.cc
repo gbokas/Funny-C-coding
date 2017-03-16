@@ -4,8 +4,8 @@ using namespace std;
 
 int main ()
 {
-  int n1, n2, max, k;
-  int nums1[1000], nums2[1000];
+  int n1, n2, max, k, l;
+  int nums1[1000], nums2[1000], nums3[1000];
   max = 5000000;
   cout << "nums1 number of points" << endl;
   cin >> n1;
@@ -21,7 +21,7 @@ int main ()
     {
       cout <<"nums have to be smaller than 1000" << endl;
     }
-  
+    l = 0;
     for (int i = 0; i < n1; i++)
       {
         max = 5000000;
@@ -29,7 +29,8 @@ int main ()
           {
 	    if (nums2[j] > max)
 	      {
-	        cout << nums2[j] << endl;
+	        nums3[l] = nums2[j];
+                l++;
 	        break;
 	      }
             if (nums1[i] == nums2[j])
@@ -38,7 +39,14 @@ int main ()
 	        k = j;
 	      }
 	  }
-        if (max == nums2[k]) cout << "-1" << endl;	        
+        if (max == nums2[k])
+          {
+            nums3[l] = -1;
+	    l++;
+          }
       }
-	      
+    for (int i = 0; i < l - 1; i++)
+      {
+	cout << nums3[i] << endl;
+      }
 }	  
